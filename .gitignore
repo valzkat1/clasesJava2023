@@ -1,0 +1,7 @@
+
+.metadata/.lock
+.metadata/.log
+.metadata/version.ini
+*.prefs
+*.snap
+/.metadata/**
