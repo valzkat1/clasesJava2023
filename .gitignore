@@ -5,3 +5,5 @@
 *.prefs
 *.snap
 /.metadata/**
+*.class
+*.class
