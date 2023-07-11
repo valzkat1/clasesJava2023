@@ -19,6 +19,8 @@ public class Calculo_Promedios {
 		String cantiEstudiantes = JOptionPane.showInputDialog("Por favor ingrese la cantidad de estudiantes");
 		String cantiNotas = JOptionPane.showInputDialog("Por favor ingrese la cantidad de notas a promediar");
 		
+		
+		
 	
 		canEst = objetoOperativas.convertirEntero(cantiEstudiantes);		
 		while(canEst<1) {
