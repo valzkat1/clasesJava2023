@@ -12,6 +12,9 @@ public class ventanas {
 		String nombre=JOptionPane.showInputDialog("Por favor ingrese el nombre:");
 		
 		JOptionPane.showMessageDialog(null,"Bienvenido "+nombre);
+	
+		double resultadoraiz = Math.sqrt(16);
+		
 		
 	}
 
