@@ -35,6 +35,29 @@
         window.alert("Esto es una alerta desde javascript");
     }
 
+    function LlamadoMismaFuncion(empieza,termina){
+        console.log("Ejecucion "+empieza+"  Funcion recursiva***");
+        if(termina<=empieza){
+            return;
+        }
+        LlamadoMismaFuncion(empieza+1,termina);
+
+
+
+    }
+
+
+    const disparaLlamado = function(){
+        LlamadoMismaFuncion(1,10);
+    }
+    
+    const disparaLlamado2=()=>{
+       LlamadoMismaFuncion(1,100);
+     }
+
+    
+
+
    </script>
     <script src='main.js'></script>
 </head>
@@ -54,7 +77,7 @@
 
     <div></div>
 
-    <table class="table" onclick="alerta(this)">
+    <table class="table" >
         <thead>
             <th>Nombre</th>
             <th>Edad</th>
@@ -66,14 +89,14 @@
             <td>Pepe</td>
             <td>22</td>
             <td>2222222</td>
-            <td ><img width="30px" 
+            <td onclick="alerta(this)"><img width="30px" 
                 src="https://code.visualstudio.com/assets/images/linux-logo.png"></td>
            </tr> 
            <tr>
             <td>Papo</td>
             <td>30</td>
             <td>3333333</td>
-            <td><img width="30px" 
+            <td onclick="disparaLlamado()"><img width="30px" 
                 src="https://code.visualstudio.com/assets/images/linux-logo.png"></td>
            </tr> 
         </tbody>
