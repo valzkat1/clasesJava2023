@@ -2,7 +2,7 @@ package arreglos;
 
 public class Matrices {
 
-	public static void main(String[] args) {
+	public static void mains(String[] args) {
 		// TODO Auto-generated method stub
 
 		int vector[] = new int[3];
@@ -33,4 +33,14 @@ public class Matrices {
 		
 	}
 
+	public static boolean esNumerico(String cadena) {
+		try {
+			Double.parseDouble(cadena);
+			return true;
+		}catch(Exception e) {
+			return false;
+		}
+		
+	}
+	
 }
