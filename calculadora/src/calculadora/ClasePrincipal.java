@@ -29,6 +29,16 @@ public class ClasePrincipal {
 		return retorno;
 	}
 	
+	public boolean esNumerico(String cadena) {
+		try {
+			Double.parseDouble(cadena);
+			return true;
+		}catch(Exception e) {
+			return false;
+		}
+		
+	}
+	
 	
 	
 }
