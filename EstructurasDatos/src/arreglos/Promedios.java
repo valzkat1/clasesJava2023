@@ -50,11 +50,14 @@ public class Promedios {
 		}
 		
 		for(int i=0;i<nE;i++) {
-			for(int j=0;j<nN+1;j++) {
+			System.out.print("Estudiante "+(i+1)+": ");
+			for(int j=0;j<nN;j++) {
 				
-				System.out.print(promedios[i][j]);
+				System.out.print(promedios[i][j]+" ");
 				
 			}
+			System.out.print(" ->Promedio: "+promedios[i][nN]);
+			
 		System.out.println("");
 		}
 		
