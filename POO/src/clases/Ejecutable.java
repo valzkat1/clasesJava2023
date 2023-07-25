@@ -10,10 +10,13 @@ public class Ejecutable {
 	
 		Ballenas ball=new Ballenas();
 		
+		
 		System.out.println(ball.toString());
 		
 		Orcas orc = new Orcas();
 		System.out.println(orc.toString());
+		
+		orc.setEdad(10);
 
 	}
 
