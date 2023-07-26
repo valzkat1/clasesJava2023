@@ -26,8 +26,7 @@ public class Ejecutable {
 		Ballenas balle=new Ballenas();
 		
 		Ballenas cacha=new Ballenas(20, "Grandes ballenas");
-		
-		
+	
 		System.out.println(balle.toString());
 		System.out.println(cacha.toString());
 		
@@ -37,7 +36,10 @@ public class Ejecutable {
 		orc.setEdad(10);
 		*/
 
-		
+		// Clases abstractas
+		// Clases internas
+		// Final
+		// Clases enum.
 		
 		ReproductorFM movAnd = new MovilAndroid("Xiaomi");
 		ReproductorFM movIos = new MovilIOS(12);
