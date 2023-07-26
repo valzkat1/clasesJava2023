@@ -1,7 +1,12 @@
 package clases;
 
+import java.util.ArrayList;
+
 import clases.hijos.Ballenas;
 import clases.hijos.Orcas;
+import clases.implementaciones.MovilAndroid;
+import clases.implementaciones.MovilIOS;
+import clases.interfaces.ReproductorFM;
 
 public class Ejecutable {
 
@@ -17,7 +22,7 @@ public class Ejecutable {
 	
 	
 	public static void main(String[] args) {
-	
+	/*
 		Ballenas balle=new Ballenas();
 		
 		Ballenas cacha=new Ballenas(20, "Grandes ballenas");
@@ -30,7 +35,23 @@ public class Ejecutable {
 		System.out.println(orc.toString());
 		
 		orc.setEdad(10);
+		*/
 
+		
+		
+		ReproductorFM movAnd = new MovilAndroid("Xiaomi");
+		ReproductorFM movIos = new MovilIOS(12);
+		
+		movAnd.CambiarVolumen(0, 10);
+		movIos.CambiarVolumen(10, 5);
+		
+		movAnd.encender();
+		movIos.encender();
+			
+		
+		
+		
+		
 	}
 
 }

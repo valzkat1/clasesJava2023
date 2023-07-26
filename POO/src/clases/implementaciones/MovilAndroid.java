@@ -4,6 +4,12 @@ import clases.interfaces.ReproductorFM;
 
 public class MovilAndroid implements ReproductorFM{
 
+	private String marca;
+	
+	public MovilAndroid(String marca_) {
+		this.marca = marca_;
+	}
+	
 	@Override
 	public void SintonizarEmisora(double frecuencia) {
 		System.out.println("Moviendo a la frecuencia *** "+frecuencia+" *** Android");
@@ -18,6 +24,10 @@ public class MovilAndroid implements ReproductorFM{
 		
 	}
 
+	@Override
+	public void encender() {
+		System.out.println("Buscando Emisoras *** Android");
+	}
 
 	
 
