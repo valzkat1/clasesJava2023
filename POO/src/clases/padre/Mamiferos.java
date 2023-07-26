@@ -10,6 +10,10 @@ public class Mamiferos {
 	
 	protected boolean cuadrupedo;
 	
+	//Private
+	//Solo permite acceso a la misma clase.
+	
+	
 	protected String especie;
 
 	
