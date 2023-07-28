@@ -2,7 +2,7 @@ package clases.implementaciones;
 
 import clases.interfaces.ReproductorFM;
 
-public class MovilAndroid implements ReproductorFM{
+public class MovilAndroid implements ReproductorFM {
 
 	private String marca;
 	

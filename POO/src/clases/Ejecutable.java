@@ -51,6 +51,8 @@ public class Ejecutable {
 		movIos.encender();
 			
 		
+		ClaseExterna objExterno = new ClaseExterna();
+		ClaseExterna.ClaseInterna objInterno = objExterno.new ClaseInterna();
 		
 		
 		
