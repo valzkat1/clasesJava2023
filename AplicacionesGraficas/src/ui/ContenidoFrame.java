@@ -9,11 +9,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class ContenidoFrame extends JPanel{
 
 	private JLabel contadorLbl;
 	private int cantidad;
+	private JTextField txtCampoNombre;
 	
 	
 	public ContenidoFrame() {
@@ -34,9 +36,10 @@ public class ContenidoFrame extends JPanel{
 		int widthPanel = 300;
 		int widthLabel = 150;
 		int widthButton = 100;
+		int widthJText = 150;
 		
 		int margenesLabel= (widthPanel - widthLabel)/2;
-		principal.setPreferredSize(new Dimension(widthPanel,200));
+		principal.setPreferredSize(new Dimension(widthPanel,400));
 		contadorLbl.setBounds(margenesLabel,20,widthLabel,80);
 		
 		int margenesBoton= (widthPanel - widthButton)/2;
@@ -45,6 +48,11 @@ public class ContenidoFrame extends JPanel{
 		principal.add(contadorLbl);
 		principal.add(boton);
 		
+		int margenesJText = (widthPanel - widthJText)/2;
+		txtCampoNombre = new JTextField();
+		txtCampoNombre.setBounds(widthJText, 110, widthJText, 80);
+		principal.add(txtCampoNombre);
+
 		add(principal,BorderLayout.CENTER);
 		
 	}
