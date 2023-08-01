@@ -18,6 +18,8 @@ public class Orcas extends Ballenas{
 
 
 	public Orcas() {
+		super.setCuadrupedo(false);
+		this.setCuadrupedo(false);
 		// TODO Auto-generated constructor stub
 	}
 
