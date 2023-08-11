@@ -54,8 +54,11 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 		display.setForeground(Color.green);
 		display.setBorder(new LineBorder(Color.gray));
 		display.setHorizontalAlignment(SwingConstants.RIGHT);
+		//display.setD
 		add(display);
 	}
+	
+	String operaciones[]=new String[] {"/","*","-","+"};
 	
 	public void initBotones() {
 		panelTeclas = new JPanel();
@@ -84,9 +87,10 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 			listBtn[i].setFont(new Font(Font.MONOSPACED,0,16));
 			listBtn[i].setForeground(Color.white);
 			panelTeclas.add(listBtn[i]);
+			listBtn[i].addActionListener(this);
 		}
 		
-		listBtn[12].addActionListener(this);
+		//listBtn[12].addActionListener(this);
 		
 	}
 	
@@ -111,10 +115,153 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 			
 		}
 
+	 
+	 public String UpdateDisplay(String datoPos) {
+		 String resultado="";
+		 if(display.getText().equals("0")) {
+				resultado=datoPos;
+				}else {
+					resultado=display.getText()+datoPos;
+				}
+		 
+		 return resultado;
+	 }
+	 //  "cadena a testear"
+	 
+	 public String UpdateDisplayCalculos(String ope) {
+		 String resultado="";
+		 boolean encontrado=true;
+		 String operacionTxt = "";
+		 for(String op: operaciones ) {
+			 // Determinar el comportamiento cuando el display solo contiene 
+			 // la operacion especifica.
+			 if(display.getText().indexOf(op)==-1) {
+				 encontrado=false;
+			 }else {
+				 encontrado=true;
+				 operacionTxt=op;
+			 }	 
+		}
+		 if(encontrado) {
+			 // Realizar la operacion 
+			 // Crear un arreglo a partir del texto en el display string.split("/")
+			 
+			
+		 }else {
+			
+			
+						resultado=display.getText()+ope;
+					
+			 
+		 }
+		 
+		 
+		 
+		 
+		 
+		 return resultado;
+	 }
+	 
+	 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
+		if(e.getSource()==listBtn[0]) {
+			display.setText(UpdateDisplay("7"));
+		}
+		if(e.getSource()==listBtn[1]) {
+			display.setText(UpdateDisplay("8"));
+		}
+		if(e.getSource()==listBtn[2]) {
+			display.setText(UpdateDisplay("9"));
+		}
+		
+		if(e.getSource()==listBtn[3]) {
+			display.setText(UpdateDisplayCalculos("/"));
+		}
+		
+		if(e.getSource()==listBtn[4]) {
+			if(display.getText().equals("0")) {
+				display.setText("4");
+				}else {
+					display.setText(display.getText()+"4");
+				}
+		}
+		if(e.getSource()==listBtn[5]) {
+			if(display.getText().equals("0")) {
+				display.setText("5");
+				}else {
+					display.setText(display.getText()+"5");
+				}
+		}
+		if(e.getSource()==listBtn[6]) {
+			if(display.getText().equals("0")) {
+				display.setText("6");
+				}else {
+					display.setText(display.getText()+"6");
+				}
+		}
+		if(e.getSource()==listBtn[7]) {
+			if(display.getText().equals("0")) {
+				display.setText("*");
+				}else {
+					display.setText(display.getText()+"*");
+				}
+		}
+		if(e.getSource()==listBtn[8]) {
+			if(display.getText().equals("0")) {
+				display.setText("1");
+				}else {
+					display.setText(display.getText()+"1");
+				}
+		}
+		if(e.getSource()==listBtn[9]) {
+			if(display.getText().equals("0")) {
+				display.setText("2");
+				}else {
+					display.setText(display.getText()+"2");
+				}
+		}
+		if(e.getSource()==listBtn[10]) {
+			if(display.getText().equals("0")) {
+				display.setText("3");
+				}else {
+					display.setText(display.getText()+"3");
+				}
+		}
+		if(e.getSource()==listBtn[11]) {
+			if(display.getText().equals("0")) {
+				display.setText("-");
+				}else {
+					display.setText(display.getText()+"-");
+				}
+		}
+		
+		if(e.getSource()==listBtn[12]) {
 		display.setText("0");
+		}
+		
+		if(e.getSource()==listBtn[13]) {
+			if(display.getText().equals("0")) {
+				display.setText("0");
+				}else {
+					display.setText(display.getText()+"0");
+				}
+			}
+		if(e.getSource()==listBtn[14]) {
+			if(display.getText().equals("0")) {
+				display.setText(",");
+				}else {
+					display.setText(display.getText()+",");
+				}
+			}
+		if(e.getSource()==listBtn[15]) {
+			if(display.getText().equals("0")) {
+				display.setText("+");
+				}else {
+					display.setText(display.getText()+"+");
+				}
+			}
 		// TODO Auto-generated method stub
 		
 	}
