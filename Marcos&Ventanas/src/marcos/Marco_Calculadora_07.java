@@ -27,9 +27,9 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 	int alto = 50;
 	int ancho = 50;
 	
-	final String operaciones[]=new String[] {"/","*","-","+"};
+	final String operaciones[]=new String[] {"/","x","-","+"};
 	final String txtlistaBoton[]=new String[] {"7","8","9","/",
-			  "4","5","6","*",
+			  "4","5","6","x",
 			  "1","2","3","-",
 			  "C","0",",","+"};
 	
@@ -57,7 +57,7 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 		display = new JTextField("0");
 		display.setPreferredSize(new Dimension(230,60));
 		display.setBackground(Color.black);
-		display.setFont(new Font(Font.MONOSPACED,0,24));
+		display.setFont(new Font(Font.MONOSPACED,0,18));
 		display.setForeground(Color.green);
 		display.setBorder(new LineBorder(Color.gray));
 		display.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -134,12 +134,13 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 		 for(String op: operaciones ) {
 			 // Determinar el comportamiento cuando el display solo contiene 
 			 // la operacion especifica.
-			 
+			 // 
 			 if(display.getText().indexOf(op)==-1) {
 				 encontrado=false;
 			 }else {
 				 encontrado=true;
 				 operacionTxt=op;
+				 break;
 			 }	 
 		}
 		 if(encontrado) {
@@ -147,7 +148,7 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 			 double n1,n2,total=0;
 			 try {				
 				 n1 = Double.parseDouble(numeros[0]);
-				 n2 = Double.parseDouble(numeros[2]);
+				 n2 = Double.parseDouble(numeros[1]);
 			 }catch(NumberFormatException ne) {
 				n1=0;
 				n2=0;
@@ -157,7 +158,7 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 			  case "/":
 				  total=n1/n2; 
 			   break;
-			  case "*": 
+			  case "x": 
 				  total=n1*n2; 
 				break; 
 			  case "-": 
@@ -168,7 +169,7 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 				break; 	
 			 }
 			 
-			 resultado= total+"";
+			 resultado= total+""+ope;
 			 //str.split(",");
 			 // Realizar la operacion 
 			 // Crear un arreglo a partir del texto en el display string.split("/")
