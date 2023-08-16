@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,6 +26,12 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 	GridLayout layoutGrid;
 	int alto = 50;
 	int ancho = 50;
+	
+	final String operaciones[]=new String[] {"/","*","-","+"};
+	final String txtlistaBoton[]=new String[] {"7","8","9","/",
+			  "4","5","6","*",
+			  "1","2","3","-",
+			  "C","0",",","+"};
 	
 	public Marco_Calculadora_07() {
 		initDisplay();
@@ -54,11 +61,11 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 		display.setForeground(Color.green);
 		display.setBorder(new LineBorder(Color.gray));
 		display.setHorizontalAlignment(SwingConstants.RIGHT);
-		//display.setD
+		display.setEditable(false);
 		add(display);
 	}
 	
-	String operaciones[]=new String[] {"/","*","-","+"};
+	
 	
 	public void initBotones() {
 		panelTeclas = new JPanel();
@@ -72,10 +79,7 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 		// Asignamos el panel al Jframe.
 		add(panelTeclas);
 		
-		String txtlistaBoton[]=new String[] {"7","8","9","/",
-										  "4","5","6","*",
-										  "1","2","3","-",
-										  "C","0",",","+"};
+		
 		listBtn = new JButton[16];
 		
 		for(int i=0;i<16;i++) {
@@ -95,12 +99,6 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 	}
 	
 	
-
-	public static void main(String[] args) {
-		
-		new Marco_Calculadora_07();
-
-	}
 
 	 public void iniciarMarco() {
 			
@@ -132,9 +130,11 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 		 String resultado="";
 		 boolean encontrado=true;
 		 String operacionTxt = "";
+		 String displa = display.getText();
 		 for(String op: operaciones ) {
 			 // Determinar el comportamiento cuando el display solo contiene 
 			 // la operacion especifica.
+			 
 			 if(display.getText().indexOf(op)==-1) {
 				 encontrado=false;
 			 }else {
@@ -143,16 +143,40 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 			 }	 
 		}
 		 if(encontrado) {
+			 String numeros[] = displa.split(operacionTxt);
+			 double n1,n2,total=0;
+			 try {				
+				 n1 = Double.parseDouble(numeros[0]);
+				 n2 = Double.parseDouble(numeros[2]);
+			 }catch(NumberFormatException ne) {
+				n1=0;
+				n2=0;
+			 }
+			 
+			 switch (operacionTxt) {
+			  case "/":
+				  total=n1/n2; 
+			   break;
+			  case "*": 
+				  total=n1*n2; 
+				break; 
+			  case "-": 
+				  total=n1-n2; 
+				break;
+			  case "+": 
+				  total=n1+n2; 
+				break; 	
+			 }
+			 
+			 resultado= total+"";
+			 //str.split(",");
 			 // Realizar la operacion 
 			 // Crear un arreglo a partir del texto en el display string.split("/")
 			 
 			
 		 }else {
-			
-			
-						resultado=display.getText()+ope;
-					
-			 
+			resultado=display.getText()+ope;
+					 
 		 }
 		 
 		 
@@ -166,79 +190,18 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		if(e.getSource()==listBtn[0]) {
-			display.setText(UpdateDisplay("7"));
-		}
-		if(e.getSource()==listBtn[1]) {
-			display.setText(UpdateDisplay("8"));
-		}
-		if(e.getSource()==listBtn[2]) {
-			display.setText(UpdateDisplay("9"));
-		}
-		
-		if(e.getSource()==listBtn[3]) {
-			display.setText(UpdateDisplayCalculos("/"));
-		}
-		
-		if(e.getSource()==listBtn[4]) {
-			if(display.getText().equals("0")) {
-				display.setText("4");
-				}else {
-					display.setText(display.getText()+"4");
-				}
-		}
-		if(e.getSource()==listBtn[5]) {
-			if(display.getText().equals("0")) {
-				display.setText("5");
-				}else {
-					display.setText(display.getText()+"5");
-				}
-		}
-		if(e.getSource()==listBtn[6]) {
-			if(display.getText().equals("0")) {
-				display.setText("6");
-				}else {
-					display.setText(display.getText()+"6");
-				}
-		}
-		if(e.getSource()==listBtn[7]) {
-			if(display.getText().equals("0")) {
-				display.setText("*");
-				}else {
-					display.setText(display.getText()+"*");
-				}
-		}
-		if(e.getSource()==listBtn[8]) {
-			if(display.getText().equals("0")) {
-				display.setText("1");
-				}else {
-					display.setText(display.getText()+"1");
-				}
-		}
-		if(e.getSource()==listBtn[9]) {
-			if(display.getText().equals("0")) {
-				display.setText("2");
-				}else {
-					display.setText(display.getText()+"2");
-				}
-		}
-		if(e.getSource()==listBtn[10]) {
-			if(display.getText().equals("0")) {
-				display.setText("3");
-				}else {
-					display.setText(display.getText()+"3");
-				}
-		}
-		if(e.getSource()==listBtn[11]) {
-			if(display.getText().equals("0")) {
-				display.setText("-");
-				}else {
-					display.setText(display.getText()+"-");
-				}
+		for(int i=0; i<(listBtn.length-4); i++) {
+			
+			if(e.getSource()==listBtn[i]) {
+				if(i==3|i==7|i==11) {
+					display.setText(UpdateDisplayCalculos(txtlistaBoton[i]));
+				}else				
+				display.setText(UpdateDisplay(txtlistaBoton[i]));
+			}			
 		}
 		
 		if(e.getSource()==listBtn[12]) {
-		display.setText("0");
+		   display.setText("0");
 		}
 		
 		if(e.getSource()==listBtn[13]) {
@@ -266,5 +229,11 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 		
 	}
 	
+	
+	public static void main(String[] args) {
+		
+		new Marco_Calculadora_07();
+
+	}
 	
 }
