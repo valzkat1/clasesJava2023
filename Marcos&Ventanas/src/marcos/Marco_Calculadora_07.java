@@ -144,7 +144,7 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 			 }	 
 		}
 		 if(encontrado) {
-			 String numeros[] = displa.split(operacionTxt);
+			 String numeros[] = displa.split(""+operacionTxt);
 			 double n1,n2,total=0;
 			 try {				
 				 n1 = Double.parseDouble(numeros[0]);
