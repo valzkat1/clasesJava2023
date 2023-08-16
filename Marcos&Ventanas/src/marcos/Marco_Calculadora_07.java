@@ -31,7 +31,7 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 	final String txtlistaBoton[]=new String[] {"7","8","9","/",
 			  "4","5","6","x",
 			  "1","2","3","-",
-			  "C","0",",","+"};
+			  "C","0",".","+"};
 	
 	public Marco_Calculadora_07() {
 		initDisplay();
@@ -191,42 +191,25 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		for(int i=0; i<(listBtn.length-4); i++) {
+		for(int i=0; i<listBtn.length; i++) {
 			
 			if(e.getSource()==listBtn[i]) {
-				if(i==3|i==7|i==11) {
+				if(i==3|i==7|i==11|i==15) {
 					display.setText(UpdateDisplayCalculos(txtlistaBoton[i]));
-				}else				
-				display.setText(UpdateDisplay(txtlistaBoton[i]));
+				}else if(i==12) {
+					 display.setText("0");
+				}else if(i==13) {
+					if(display.getText().equals("0")) {
+					 display.setText("0");
+					}else {
+						display.setText(display.getText()+"0");
+					}
+				}else {				
+				     display.setText(UpdateDisplay(txtlistaBoton[i]));
+				}
 			}			
 		}
 		
-		if(e.getSource()==listBtn[12]) {
-		   display.setText("0");
-		}
-		
-		if(e.getSource()==listBtn[13]) {
-			if(display.getText().equals("0")) {
-				display.setText("0");
-				}else {
-					display.setText(display.getText()+"0");
-				}
-			}
-		if(e.getSource()==listBtn[14]) {
-			if(display.getText().equals("0")) {
-				display.setText(",");
-				}else {
-					display.setText(display.getText()+",");
-				}
-			}
-		if(e.getSource()==listBtn[15]) {
-			if(display.getText().equals("0")) {
-				display.setText("+");
-				}else {
-					display.setText(display.getText()+"+");
-				}
-			}
-		// TODO Auto-generated method stub
 		
 	}
 	
