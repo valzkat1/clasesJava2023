@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,7 +22,7 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 	JButton listBtn[], btnResultado;
 	JTextField display;
 	JPanel panelTeclas;
-	
+	String operacionTxt = "";
 	FlowLayout layoutFlow;
 	GridLayout layoutGrid;
 	int alto = 50;
@@ -49,6 +50,7 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 		btnResultado.setForeground(Color.white);
 		btnResultado.setOpaque(true);
 		btnResultado.setBorder(new LineBorder(Color.gray));
+		btnResultado.addActionListener(this);
 		add(btnResultado);
 	}
 	
@@ -100,8 +102,7 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 	
 	
 
-	 public void iniciarMarco() {
-			
+	 public void iniciarMarco() {			
 		    layoutFlow = new FlowLayout(FlowLayout.CENTER,10,10);
 		    
 		    setLayout(layoutFlow);
@@ -109,8 +110,8 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 			setMinimumSize(new Dimension(255,420));
 			setResizable(false);
 			getContentPane().setBackground(Color.black);
-			setVisible(true);
-			
+			setLocation(450, 250);
+			setVisible(true);			
 		}
 
 	 
@@ -129,8 +130,30 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 	 public String UpdateDisplayCalculos(String ope) {
 		 String resultado="";
 		 boolean encontrado=true;
-		 String operacionTxt = "";
+		 
 		 String displa = display.getText();
+		
+		 encontrado = isCalculo();
+		 if(encontrado) {
+		
+			 resultado= calcular(display.getText(),operacionTxt,ope);
+			 
+			
+			
+		 }else {
+			resultado=display.getText()+ope;
+					 
+		 }
+		 
+		 
+		 
+		 
+		 
+		 return resultado;
+	 }
+	 
+	 public boolean isCalculo() {
+		 boolean encontrado=false;
 		 for(String op: operaciones ) {
 			 // Determinar el comportamiento cuando el display solo contiene 
 			 // la operacion especifica.
@@ -143,9 +166,14 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 				 break;
 			 }	 
 		}
-		 if(encontrado) {
-			 String numeros[] = displa.split(""+operacionTxt);
-			 double n1,n2,total=0;
+		 return encontrado;
+	 }
+	 
+	 public String calcular(String displa,String operacionTxt,String ope) {
+		 String numeros[] = displa.split(Pattern.quote(operacionTxt));
+		 double n1,n2,total=0;
+		 String resultado="";
+		 if(numeros.length>1) {
 			 try {				
 				 n1 = Double.parseDouble(numeros[0]);
 				 n2 = Double.parseDouble(numeros[1]);
@@ -153,7 +181,7 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 				n1=0;
 				n2=0;
 			 }
-			 
+		 
 			 switch (operacionTxt) {
 			  case "/":
 				  total=n1/n2; 
@@ -168,28 +196,27 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 				  total=n1+n2; 
 				break; 	
 			 }
-			 
+		 
 			 resultado= total+""+ope;
-			 //str.split(",");
-			 // Realizar la operacion 
-			 // Crear un arreglo a partir del texto en el display string.split("/")
-			 
-			
 		 }else {
-			resultado=display.getText()+ope;
-					 
+			resultado = display.getText();
 		 }
-		 
-		 
-		 
-		 
-		 
 		 return resultado;
 	 }
 	 
 	 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==btnResultado) {
+			
+			if(isCalculo()) {
+				String total=calcular(display.getText(), operacionTxt, operacionTxt);
+				display.setText(total);	
+			}else {
+				
+			}
+			
+		}else {
 		
 		for(int i=0; i<listBtn.length; i++) {
 			
@@ -209,7 +236,7 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 				}
 			}			
 		}
-		
+		}
 		
 	}
 	
