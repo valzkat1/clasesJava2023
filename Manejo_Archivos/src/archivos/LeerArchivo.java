@@ -9,8 +9,10 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Vector;
 
 import modelos.Usuario;
+import vistas.ListaUsuarios;
 
 public class LeerArchivo {
 
@@ -18,19 +20,22 @@ public class LeerArchivo {
 	File archivo;
 	FileReader fr;
 	BufferedReader br;
-	ArrayList<Usuario> listaUsuarios;
-	
+	Vector<Usuario> listaUsuarios;
+	String contenido[][];
 	public LeerArchivo() {
-		listaUsuarios= new ArrayList<Usuario>();
+		listaUsuarios= new Vector<Usuario>();
 		try {
-			
-		    //archivo = new File("C:\\ClasesJava2023","usuarios.txt");
+		    //archivo = new File("C:\ClasesJava2023\clasesJava2023\Manejo_Archivos\src\archivos");
 		    archivo = new File("C:\\ClasesJava2023\\usuarios.txt");
 			fr = new FileReader(archivo);
 			br = new BufferedReader(fr);
 			String fila ="";
-			
+			// MVC
+			contenido=new String[3][4];
+			int fi=0;
 			while((fila=br.readLine())!= null) {
+				contenido[fi]=fila.split(",");
+				fi++;
 				String userLine[] =fila.split(","); 
 				String nombre=userLine[0];
 				String apellido= userLine[1];
@@ -63,9 +68,15 @@ public class LeerArchivo {
 		
 		
 	}
+	public String[][] matrizUsuarios(){
+		return contenido;
+	}
 
+	public Vector<Usuario> getListaUser(){
+		return listaUsuarios;
+	}
 	public static void main(String[] args) {
-		new LeerArchivo();
+		new ListaUsuarios();
 	}
 
 }
