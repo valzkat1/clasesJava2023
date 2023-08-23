@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 import modelos.Usuario;
@@ -23,7 +24,9 @@ public class LeerArchivo {
 		listaUsuarios= new ArrayList<Usuario>();
 		try {
 			
-			archivo = new File("/Manejo_Archivos/src/archivos/usuarios.txt");
+			Path ruta = Path.of("c");
+			System.out.println("Ruta path**"+ruta);
+		    archivo = new File("usuarios.txt");
 			fr = new FileReader(archivo);
 			br = new BufferedReader(br);
 			String fila ="";
