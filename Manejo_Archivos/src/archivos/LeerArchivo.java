@@ -24,11 +24,10 @@ public class LeerArchivo {
 		listaUsuarios= new ArrayList<Usuario>();
 		try {
 			
-			Path ruta = Path.of("c");
-			System.out.println("Ruta path**"+ruta);
-		    archivo = new File("usuarios.txt");
+		    //archivo = new File("C:\\ClasesJava2023","usuarios.txt");
+		    archivo = new File("C:\\ClasesJava2023\\usuarios.txt");
 			fr = new FileReader(archivo);
-			br = new BufferedReader(br);
+			br = new BufferedReader(fr);
 			String fila ="";
 			
 			while((fila=br.readLine())!= null) {
