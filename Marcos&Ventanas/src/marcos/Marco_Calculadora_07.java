@@ -204,6 +204,7 @@ public class Marco_Calculadora_07 extends JFrame implements ActionListener{
 		 return resultado;
 	 }
 	 
+	// API  
 	 
 	@Override
 	public void actionPerformed(ActionEvent e) {
