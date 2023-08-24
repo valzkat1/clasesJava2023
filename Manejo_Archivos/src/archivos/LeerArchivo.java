@@ -26,7 +26,11 @@ public class LeerArchivo {
 		listaUsuarios= new Vector<Usuario>();
 		try {
 		    //archivo = new File("C:\ClasesJava2023\clasesJava2023\Manejo_Archivos\src\archivos");
-		    archivo = new File("C:\\ClasesJava2023\\usuarios.txt");
+		    //archivo = new File("C:\\ClasesJava2023\\usuarios.txt");
+			
+		    //archivo = new File("Manejo_Archivos\\src\\datos","usuarios.txt");
+		    //archivo = new File("src/datos","usuarios.txt");
+		    archivo = new File("src/datos/usuarios.txt");
 			fr = new FileReader(archivo);
 			br = new BufferedReader(fr);
 			String fila ="";
