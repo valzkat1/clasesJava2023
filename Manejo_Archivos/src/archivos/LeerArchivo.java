@@ -11,6 +11,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 
 import modelos.Usuario;
+import vistas.ListaUsuarios;
 
 public class LeerArchivo {
 
@@ -20,52 +21,60 @@ public class LeerArchivo {
 	BufferedReader br;
 	ArrayList<Usuario> listaUsuarios;
 	
-	public LeerArchivo() {
-		listaUsuarios= new ArrayList<Usuario>();
+	public String[][] getDatosTxt(){
+		String[][] datos = new String[4][4];
 		try {
+	    archivo = new File("src/datos/","usuarios.txt");
+		
+				fr = new FileReader(archivo);
 			
-		    //archivo = new File("C:\\ClasesJava2023","usuarios.txt");
-		    archivo = new File("C:\\ClasesJava2023\\usuarios.txt");
-			fr = new FileReader(archivo);
 			br = new BufferedReader(fr);
 			String fila ="";
-			
+			int contador=0;
 			while((fila=br.readLine())!= null) {
-				String userLine[] =fila.split(","); 
+				String userLine[] =fila.split(",");
+				datos[contador]=fila.split(",");
+				contador=contador+1;
 				String nombre=userLine[0];
 				String apellido= userLine[1];
 				String cargo = userLine[2];
 				String id = userLine[3];
-				listaUsuarios.add(new Usuario(Integer.parseInt(id),nombre,apellido,cargo));
+				
 				
 			}
 	
+			
 			fr.close();	
-			
-			for(Usuario u:listaUsuarios) {
-				
-				System.out.println(u.toString());
-			}
-			
-			
-			
+			return datos;
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO: handle exception
-			// AOP programacion orientada a aspectos
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			return datos;
 		}
-		finally {
+		
+	}
+	
+	public LeerArchivo() {
+	
+		
 			
-		}
+			
+		
 				
 		
 		
 	}
 
+	// Cuatro procedimientos basicos que se realizan al interactuar con datos persistentes.
+	// Create Read Update Delete
+	
 	public static void main(String[] args) {
-		new LeerArchivo();
+		//new LeerArchivo();
+		new ListaUsuarios();
 	}
 
 }
