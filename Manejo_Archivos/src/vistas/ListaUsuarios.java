@@ -1,6 +1,7 @@
 package vistas;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -31,12 +32,14 @@ public class ListaUsuarios extends JFrame{
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				datos=usoFiles.getDatosTxt();
+				System.out.println("Datos matriz "+datos);
 				table.setModel(
 					new DefaultTableModel(
 							datos,
 							new String[] {"Nombre","Apellido","Cargo","ID"}
 							)
 					);
+			String cargonuevo= JOptionPane.showInputDialog("Por favor ingrese el nuevo cargo:");
 			}
 		});
 		getContentPane().add(btnNewButton, BorderLayout.SOUTH);
