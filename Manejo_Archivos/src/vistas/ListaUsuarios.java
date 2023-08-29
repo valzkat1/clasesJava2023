@@ -12,24 +12,33 @@ import java.awt.BorderLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.JToolBar;
 
 public class ListaUsuarios extends JFrame{
 	private JTable table;
 	private String[][] datos;
 	private LeerArchivo usoFiles;
 	private JScrollPane panelScroll;
-	
+	private JToolBar toolBar;
+	FrmUsuarios frmUsuarios;
 	public ListaUsuarios() {
 		panelScroll = new JScrollPane();
 		usoFiles = new LeerArchivo();
 		table = new JTable(new DefaultTableModel());
+		table.setBackground(new Color(204, 204, 204));
+		frmUsuarios = new FrmUsuarios();
+		
 		
 		panelScroll.setViewportView(table);
 		
-		add(panelScroll);
+		getContentPane().add(panelScroll);
 		
-		JButton btnNewButton = new JButton("Leer data");
-		btnNewButton.addActionListener(new ActionListener() {
+	
+		
+		JButton btnLeerDatos = new JButton("Leer data");
+		
+		btnLeerDatos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				datos=usoFiles.getDatosTxt();
 				System.out.println("Datos matriz "+datos);
@@ -39,10 +48,27 @@ public class ListaUsuarios extends JFrame{
 							new String[] {"Nombre","Apellido","Cargo","ID"}
 							)
 					);
-			String cargonuevo= JOptionPane.showInputDialog("Por favor ingrese el nuevo cargo:");
+			//String cargonuevo= JOptionPane.showInputDialog("Por favor ingrese el nuevo cargo:");
 			}
 		});
-		getContentPane().add(btnNewButton, BorderLayout.SOUTH);
+		
+		JButton btnCrearDatos = new JButton("Nuevo");
+		btnCrearDatos.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				frmUsuarios.setVisible(true);
+				
+			}
+		});
+		
+		toolBar = new JToolBar();
+		toolBar.add(btnLeerDatos);
+		toolBar.add(btnCrearDatos);
+		add(toolBar,BorderLayout.NORTH);
+		
+		//getContentPane().add(btnNewButton, BorderLayout.SOUTH);
 		IniciarMarco();
 		// TODO Auto-generated constructor stub
 	}

@@ -25,6 +25,7 @@ public class LeerArchivo {
 		String[][] datos = new String[4][4];
 		try {
 	    archivo = new File("src/datos/","usuarios.txt");
+	    //archivo = new File("C:\\usuarios.txt");
 		
 				fr = new FileReader(archivo);
 			
