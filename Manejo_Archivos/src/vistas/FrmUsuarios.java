@@ -4,9 +4,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import archivos.EditarArchivo;
+import modelos.Usuario;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,7 +28,7 @@ public class FrmUsuarios extends JFrame implements ActionListener{
 	
 	private JButton btnGuardar;
 	private JButton btnCerrar;
-	
+	private EditarArchivo edit;
 	
 	public FrmUsuarios() {
 		setTitle("Crear usuarios");
@@ -67,9 +72,9 @@ public class FrmUsuarios extends JFrame implements ActionListener{
 		lblId.setBounds(30, 160, 100, 20);
 		contenedor.add(lblId);
 		
-		txtCargo = new JTextField();
-		txtCargo.setBounds(110, 157, 200, 20);
-		contenedor.add(txtCargo);
+		txtId = new JTextField();
+		txtId.setBounds(110, 157, 200, 20);
+		contenedor.add(txtId);
 		
 		btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(this);
@@ -95,7 +100,20 @@ public class FrmUsuarios extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		String nombre= txtNombre.getText();
+		String apell = txtApellido.getText();
+		String cargo = txtCargo.getText();
+		String id = txtId.getText();
+		
+		if(nombre.length()<=2) {
+			JOptionPane.showMessageDialog(this,"Nombre requerido");
+		}else {
+			Usuario u=new Usuario(Integer.parseInt(id),nombre,apell,cargo);
+			edit = new EditarArchivo(u);
+			
+			
+		}
+		
 		
 	}
 }

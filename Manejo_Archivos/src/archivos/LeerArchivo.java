@@ -19,7 +19,6 @@ public class LeerArchivo {
 	File archivo;
 	FileReader fr;
 	BufferedReader br;
-	ArrayList<Usuario> listaUsuarios;
 	
 	public String[][] getDatosTxt(){
 		String[][] datos = new String[4][4];
