@@ -12,20 +12,23 @@ public class EditarArchivo {
 	FileWriter editor;
 	Usuario u;
 	
-	public EditarArchivo(Usuario user) {
-		this.u=user;
+	public EditarArchivo(Usuario user){
+		this.u=user;		
+	
+	}
+	
+	public void  AdicionarDato() {
 		try {
 		    archivo = new File("src/datos","usuarios.txt");		
 			editor = new FileWriter(archivo,true);
 			
-			editor.write(u.getNombre()+","+u.getApellido()+","+u.getCargo()+","+u.getId()+"\r\n");
+			editor.write(this.u.lineaArchivo());
 			editor.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-	
 	}
+	
 
 }

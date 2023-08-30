@@ -19,6 +19,7 @@ public class LeerArchivo {
 	File archivo;
 	FileReader fr;
 	BufferedReader br;
+	String[][] datosUsuario;
 	
 	public String[][] getDatosTxt(){
 		String[][] datos = new String[4][4];
@@ -72,9 +73,6 @@ public class LeerArchivo {
 	// Cuatro procedimientos basicos que se realizan al interactuar con datos persistentes.
 	// Create Read Update Delete
 	
-	public static void main(String[] args) {
-		//new LeerArchivo();
-		new ListaUsuarios();
-	}
+	
 
 }

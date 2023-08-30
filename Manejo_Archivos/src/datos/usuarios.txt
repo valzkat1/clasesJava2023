@@ -1,3 +1,4 @@
 victor,ramirez,doscente,1
 pepe,perez,alumno,2
-papo,rendon,alumno,3nombre,apellido,gftasd,123
+papo,rendon,alumno,3
+nombres,fasdfasd,fasdf,213

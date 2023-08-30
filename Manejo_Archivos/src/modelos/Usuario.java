@@ -82,8 +82,11 @@ public class Usuario {
 		this.cargo = cargo;
 	}
 
+	
 
-
+	public String lineaArchivo() {
+		return "\r\n"+getNombre()+","+getApellido()+","+getCargo()+","+getId();
+	}
 
 	@Override
 	public String toString() {

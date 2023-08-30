@@ -105,11 +105,15 @@ public class FrmUsuarios extends JFrame implements ActionListener{
 		String cargo = txtCargo.getText();
 		String id = txtId.getText();
 		
+		//javax.validation
+		
 		if(nombre.length()<=2) {
 			JOptionPane.showMessageDialog(this,"Nombre requerido");
-		}else {
+		}
+		else {
 			Usuario u=new Usuario(Integer.parseInt(id),nombre,apell,cargo);
 			edit = new EditarArchivo(u);
+			edit.AdicionarDato();
 			
 			
 		}
