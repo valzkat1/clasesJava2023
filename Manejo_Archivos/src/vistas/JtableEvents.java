@@ -13,21 +13,31 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
+import archivos.EditarArchivo;
+import archivos.LeerArchivo;
+
 public class JtableEvents implements ListSelectionListener,TableModelListener{
 
 	String[] cabeceras= {"A1","B1","C1","D1"};
 	
-	Object [][] datos = {
+	LeerArchivo objLector = new LeerArchivo();
+	
+	/*Object [][] datos = {
 			{"A2","B2","C2","D2"},
 			{"A3","B3","C3","D3"},
 			{"A4","B4","C4","D4"}
-	};
+	};*/
 	
-	JTable tablaExcel =new JTable(datos,cabeceras);
+	Object [][] datos;
+	JTable tablaExcel;
 	
 	TableModel tableMod;
 	
-	public JtableEvents() {		
+	public JtableEvents() {	
+		
+		datos = objLector.getDatosTxt();
+		tablaExcel =new JTable(datos,cabeceras);
+		
 		JFrame jfm = new JFrame();
 		jfm.setSize(500,300);
 		jfm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
@@ -48,8 +58,11 @@ public class JtableEvents implements ListSelectionListener,TableModelListener{
 			@Override
 			public void tableChanged(TableModelEvent tme) {
 				
-				String valor = (String) tableMod.getValueAt(1, 1);
+				
+				String valor = (String) tableMod.getValueAt(tme.getFirstRow(), tme.getColumn());
 				System.out.println("Valor celda** "+valor);
+				EditarArchivo ed=new EditarArchivo(null);
+				ed.Editar(valor, tme.getFirstRow(), tme.getColumn());
 			}
 		});
 		
