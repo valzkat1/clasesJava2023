@@ -67,6 +67,7 @@ public class JtableDinamica {
 				
 				if(tme.getType() == TableModelEvent.UPDATE) {
 					
+					try {
 					TableModel modelo = (TableModel) tme.getSource();
 					
 					int fila = tme.getFirstRow();
@@ -80,15 +81,20 @@ public class JtableDinamica {
 					double columna2 = Double.parseDouble(modelo.getValueAt(fila, 1).toString());
 					double columna3 = Double.parseDouble(modelo.getValueAt(fila, 2).toString());
 				
-					modelo.setValueAt((columna1+columna2+columna3), fila, columna);
+					modelo.setValueAt((columna1+columna2+columna3), fila, 3);
 				
 				
 					double fila1 = ((Number) modelo.getValueAt(0, columna)).doubleValue();
 					double fila2 = ((Number) modelo.getValueAt(1, columna)).doubleValue();
 					double fila3 = ((Number) modelo.getValueAt(2, columna)).doubleValue();
 					
-					modelo.setValueAt((fila1+fila2+fila3), fila, columna);
+					modelo.setValueAt((fila1+fila2+fila3), 3, columna);
 				
+					}catch (Exception e) {
+						
+						System.out.println("Error** "+e);
+						// TODO: handle exception
+					}
 				}
 				
 			}
