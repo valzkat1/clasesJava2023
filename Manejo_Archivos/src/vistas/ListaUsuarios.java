@@ -40,7 +40,7 @@ public class ListaUsuarios extends JFrame{
 		
 		btnLeerDatos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				datos=usoFiles.getDatosTxt();
+				datos=usoFiles.getDatosTxt("usuarios.txt");
 				System.out.println("Datos matriz "+datos);
 				table.setModel(
 					new DefaultTableModel(

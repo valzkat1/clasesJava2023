@@ -35,7 +35,7 @@ public class JtableEvents implements ListSelectionListener,TableModelListener{
 	
 	public JtableEvents() {	
 		
-		datos = objLector.getDatosTxt();
+		datos = objLector.getDatosTxt("usuarios.txt");
 		tablaExcel =new JTable(datos,cabeceras);
 		
 		JFrame jfm = new JFrame();

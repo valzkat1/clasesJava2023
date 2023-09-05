@@ -35,7 +35,7 @@ public class EditarArchivo {
 		    archivo = new File("src/datos","usuarios.txt");		
 						
 			LeerArchivo leer=new LeerArchivo();
-			Object[][] data=leer.getDatosTxt();
+			Object[][] data=leer.getDatosTxt("usuarios.txt");
 			
 			editor = new FileWriter(archivo,false);
 			

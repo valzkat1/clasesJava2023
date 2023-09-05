@@ -21,10 +21,10 @@ public class LeerArchivo {
 	BufferedReader br;
 	String[][] datosUsuario;
 	
-	public String[][] getDatosTxt(){
+	public String[][] getDatosTxt(String nombreArchivo){
 		String[][] datos = new String[4][4];
 		try {
-	    archivo = new File("src/datos/","usuarios.txt");
+	    archivo = new File("src/datos/",nombreArchivo);
 	    //archivo = new File("C:\\usuarios.txt");
 		
 				fr = new FileReader(archivo);

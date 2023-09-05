@@ -1,4 +1,4 @@
 victor,ramirez,doscente,1
 pepe,perez,alumno,2
-papo,rendon,alumno,3
+papo,rendon,alumno 1,3
 nombres xx,fasdfasd,fasdf,213

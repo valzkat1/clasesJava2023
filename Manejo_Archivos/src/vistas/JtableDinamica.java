@@ -1,10 +1,13 @@
 package vistas;
 
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import archivos.LeerArchivo;
@@ -33,7 +36,10 @@ public class JtableDinamica {
 	JTable tabla;
 	
 	public JtableDinamica() {
+		datos = objLector.getDatosTxt("cuadromagico.txt");
 		tabla= new JTable(new ModeloCuadroMagico());
+		
+		tabla.setDefaultRenderer(Double.class, new RenderTable());
 		JFrame jfm = new JFrame();
 		jfm.setSize(500,300);
 		jfm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
@@ -42,6 +48,7 @@ public class JtableDinamica {
 		tabla.setPreferredScrollableViewportSize(new Dimension(600,400));
 		jfm.add(new JScrollPane(tabla));
 		jfm.setVisible(true);
+		
 		
 	}
 
@@ -57,9 +64,32 @@ public class JtableDinamica {
 			super(datos,cabeceras);
 		}
 		
+		// Sobreescribir el comportamiento de la funcion isCellEditable()
 		@Override
 		public boolean isCellEditable(int fila,int columna) {
-			return fila<2 && columna<2;
+			return fila<3 && columna<3;
+		}
+		
+		
+	}
+	
+	class RenderTable extends DefaultTableCellRenderer{
+		
+		@Override
+		public Component getTableCellRendererComponent(JTable tabla, Object valor, boolean isSelected, boolean hasFocus, int row, int column) {
+			
+			super.getTableCellRendererComponent(tabla, valor, isSelected, hasFocus, row, column);
+			
+			if((row == 3) || (column == 3)) {
+				setBackground(Color.GRAY);
+				//setForeground(Color.WHITE);
+			}
+			else {
+				setBackground(Color.WHITE);
+				//setForeground(Color.BLACK);
+			}
+			
+			return this;
 		}
 		
 		
