@@ -5,6 +5,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.event.TableModelEvent;
@@ -84,12 +85,28 @@ public class JtableDinamica {
 					modelo.setValueAt((columna1+columna2+columna3), fila, 3);
 				
 				
-					double fila1 = ((Number) modelo.getValueAt(0, columna)).doubleValue();
-					double fila2 = ((Number) modelo.getValueAt(1, columna)).doubleValue();
-					double fila3 = ((Number) modelo.getValueAt(2, columna)).doubleValue();
+					double fila1 = Double.parseDouble(modelo.getValueAt(0, columna).toString());
+					double fila2 = Double.parseDouble(modelo.getValueAt(1, columna).toString());
+					double fila3 = Double.parseDouble(modelo.getValueAt(2, columna).toString());
 					
 					modelo.setValueAt((fila1+fila2+fila3), 3, columna);
 				
+					double totC1 = Double.parseDouble(modelo.getValueAt(3, 0).toString());
+					double totC2 = Double.parseDouble(modelo.getValueAt(3, 1).toString());
+					double totC3 = Double.parseDouble(modelo.getValueAt(3, 2).toString());
+					
+					double totalColumnas = totC1+totC2+totC3;
+					
+					double totF1 = Double.parseDouble(modelo.getValueAt(0, 3).toString());
+					double totF2 = Double.parseDouble(modelo.getValueAt(1, 3).toString());
+					double totF3 = Double.parseDouble(modelo.getValueAt(2, 3).toString());
+					
+					double totalFilas = totF1+totF2+totF3;
+					
+					if(totalColumnas == totalFilas) {
+						JOptionPane.showMessageDialog(jfm, "EnHorabuena.! has logrado el objetivo.");
+					}
+					modelo.setValueAt(totalFilas-totalColumnas, 3, 3);
 					}catch (Exception e) {
 						
 						System.out.println("Error** "+e);
