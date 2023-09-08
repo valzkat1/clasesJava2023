@@ -3,6 +3,7 @@ package vistas;
 import java.awt.Dimension;
 import java.awt.ScrollPane;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -18,7 +19,11 @@ import archivos.LeerArchivo;
 
 public class JtableEvents implements ListSelectionListener,TableModelListener{
 
-	String[] cabeceras= {"A1","B1","C1","D1"};
+	String[] cabeceras= {"A1","B1","C1","Promedio"};
+	
+	String [] columnasGrafic = {"Victor","pepe","papo","nombres xx"};
+	
+	double[] promedios = {5, 3.5, 4, 3};
 	
 	LeerArchivo objLector = new LeerArchivo();
 	
@@ -43,6 +48,11 @@ public class JtableEvents implements ListSelectionListener,TableModelListener{
 		jfm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
 		tableMod = tablaExcel.getModel();
 		
+		JButton btnGraficar = new JButton("Graficar");
+		btnGraficar.setLocation(250, 200);
+		
+		jfm.add(btnGraficar);
+		
 		tablaExcel.setPreferredScrollableViewportSize(new Dimension(600,400));
 		jfm.add(new JScrollPane(tablaExcel));
 		jfm.setVisible(true);
@@ -58,7 +68,8 @@ public class JtableEvents implements ListSelectionListener,TableModelListener{
 			@Override
 			public void tableChanged(TableModelEvent tme) {
 				
-				
+				GraficoBarras gb = new GraficoBarras(columnasGrafic, promedios);
+				gb.setVisible(true);
 				String valor = (String) tableMod.getValueAt(tme.getFirstRow(), tme.getColumn());
 				System.out.println("Valor celda** "+valor);
 				EditarArchivo ed=new EditarArchivo(null);

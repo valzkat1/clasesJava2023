@@ -14,9 +14,10 @@ import javax.swing.border.EmptyBorder;
 public class GraficoBarras extends JFrame{
 	private JPanel panelPpal;	
 	int valorCambio = 50;
+	String [] columnas;
+	double[] promedios;
 	
-	
-	public GraficoBarras() {
+	public GraficoBarras(String [] columnas, double[] promedios) {
 		panelPpal = new JPanel();
 		setBounds(100,100,600,450);
 		panelPpal.setBorder(new EmptyBorder(5,5,5,5));
@@ -37,6 +38,8 @@ public class GraficoBarras extends JFrame{
 				
 			}
 		});
+		this.columnas=columnas;
+		this.promedios=promedios;
 	}
 
 	public static void main(String[] args) {
@@ -44,8 +47,8 @@ public class GraficoBarras extends JFrame{
 			
 			@Override
 			public void run() {
-				GraficoBarras graf=new GraficoBarras();
-				graf.setVisible(true);
+				//GraficoBarras graf=new GraficoBarras();
+				//graf.setVisible(true);
 			}
 		});
 		
@@ -91,6 +94,7 @@ public class GraficoBarras extends JFrame{
 		g.drawString("Item 4", 510, 220);
 		
 		
+
 	}
 
 }
