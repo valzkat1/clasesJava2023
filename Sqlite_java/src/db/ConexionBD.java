@@ -37,7 +37,7 @@ public class ConexionBD {
 	
 	public static Connection getConexion() {
 		
-		ResourceBundle rb = ResourceBundle.getBundle("bd-params");
+		ResourceBundle rb = ResourceBundle.getBundle("resources.bd-params");
 		String driver = rb.getString("driver");
 		String url = rb.getString("url");
 		String user = rb.getString("user");
