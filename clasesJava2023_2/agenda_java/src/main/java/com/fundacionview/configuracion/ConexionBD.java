@@ -9,9 +9,12 @@ import java.util.ResourceBundle;
 public class ConexionBD {
 
 	private static Connection con;
+	private final String TABLE_NAME = "Contactos";
 	
 	public ConexionBD() {
-		// TODO Auto-generated constructor stub
+		// ejecutar el statemen de semilla.
+		String semilla="CREATE TABLE IF NOT EXIST "+TABLE_NAME+" (id int not null autoincrement, nombre varchar(100) not null,apellidos varchar(100) not null,)";
+		
 	}
 	
 	public static Connection getConexion(String driver,String url,String user,String pass) {

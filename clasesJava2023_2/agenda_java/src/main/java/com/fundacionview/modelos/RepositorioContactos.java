@@ -1,6 +1,7 @@
 package com.fundacionview.modelos;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,6 +16,10 @@ import com.fundacionview.configuracion.ConexionBD;
 public class RepositorioContactos {
 
 	private Connection conect;
+	
+	private final String TABLE_NAME = "Contactos";
+	
+	
 
 	public RepositorioContactos() {	
 		conect = ConexionBD.getConexion();		
@@ -27,7 +32,7 @@ public class RepositorioContactos {
 		try {
 			Statement stm = this.conect.createStatement();
 		
-			String query = "SELECT * FROM Contactos ";
+			String query = "SELECT * FROM "+TABLE_NAME+" ";
 			switch (cat) {
 			case FAMILIA:
 				query += " WHERE categoria='Familiar' ";
@@ -51,19 +56,86 @@ public class RepositorioContactos {
 			ResultSet rs = stm.executeQuery(query);
 			
 			while(rs.next()) {
-				contactos.add(null)
+				contactos.add(generarContacto(rs));
 			}
 			
-			
+			return contactos;
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		return null;
+		return contactos;	
+
 	}
+	
+	// Vulnerable a SqlInjectios.
+	public Contactos getByID(int id) throws SQLException {
+		
+		String query = "SELECT *FROM "+TABLE_NAME+" WHERE id="+id;
+		
+		Statement stm = this.conect.createStatement();
+		ResultSet rs = stm.executeQuery(query);
+		rs.next();
+		Contactos c= generarContacto(rs);
+		
+		return c;
+	}
+	
+	
+	public void insertContacto(Contactos co) throws SQLException {
+		
+		String query = "INSERT INTO "+TABLE_NAME+" values (null, ?, ?, ?, ?, ?, ?)";
+		
+		PreparedStatement ps = this.conect.prepareStatement(query);
+		CompletarStatement(co, ps);
+		
+		ps.executeUpdate();
+		
+	}
+	
+	
+	public void actualizarContacto(Contactos co) throws SQLException {
+		
+		String query = "UPDATE "+TABLE_NAME+" set nombre=?, apellidos=?, email=?, fechaNacimiento=?,direccion=?, categoria=? "+
+					   " WHERE id='"+co.getId()+"' ";
+		
+		PreparedStatement ps = this.conect.prepareStatement(query);
+		CompletarStatement(co, ps);
+		ps.executeUpdate();
+		
+		
+	}
+	
+	
+	public void borrarContacto(int id) throws SQLException {
+		
+		String queryDelete = "DELETE FROM "+TABLE_NAME+" WHERE id="+id;
+		
+		Statement stm = this.conect.createStatement();
+		
+		stm.executeUpdate(queryDelete);
+	}
+	
+	
+	public void eliminarTodos() throws SQLException {
+		String queryDelete = "DELETE FROM "+TABLE_NAME+" ";		
+		Statement stm = this.conect.createStatement();		
+		stm.executeUpdate(queryDelete);
+	}
+	
+	
+	private void CompletarStatement(Contactos co, PreparedStatement ps ) throws SQLException {
+		
+		ps.setString(2, co.getNombre());
+		ps.setString(3, co.getApellidos());
+		ps.setString(4, co.getEmail());
+		ps.setDate(5, (java.sql.Date) co.getFechaNacimiento());
+		ps.setString(6, co.getDireccion());
+		ps.setString(7, co.getCategoria());
+		
+	}
+	
 	
 	private Contactos generarContacto(ResultSet rs) throws SQLException {
 		
