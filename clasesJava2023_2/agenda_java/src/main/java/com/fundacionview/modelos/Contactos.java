@@ -10,6 +10,14 @@ public class Contactos {
 	private String email;
 	private Date fechaNacimiento;
 	private String direccion;
+	private String categoria;
+	
+	public String getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
 	public int getId() {
 		return id;
 	}

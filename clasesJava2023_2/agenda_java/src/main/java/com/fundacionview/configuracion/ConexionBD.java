@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+// Patron Facade
 public class ConexionBD {
 
 	private static Connection con;
