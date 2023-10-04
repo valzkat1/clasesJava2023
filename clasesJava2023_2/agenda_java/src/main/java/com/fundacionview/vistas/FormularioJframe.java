@@ -5,11 +5,15 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import com.fundacionview.modelos.Categoria;
+import com.fundacionview.modelos.Contactos;
 
 public class FormularioJframe extends TemlateJframe{
 
@@ -71,8 +75,20 @@ public class FormularioJframe extends TemlateJframe{
 		txtEmail.setForeground(new Color(24,20,10));
 		
 	}
-
+ public Contactos getContacto() {
+       // validarDatos();
+        String nom = this.txtNombre.getText();
+        String ape = this.txtApellido.getText();
+        String mail = this.txtEmail.getText();
+        String dir = this.txtDir.getText();
+        
+        String nac =(this.txtFecha.getText());
+       // Categoria cat = (Categoria) this.jComboBoxCategoria.getSelectedItem();
+        return new Contactos(0, nom, ape, mail, new Date(),dir);
+    }
 	
-	
+	protected JPanel getJPanelBotonera() {
+        return panelDatos;
+    }
 	
 }

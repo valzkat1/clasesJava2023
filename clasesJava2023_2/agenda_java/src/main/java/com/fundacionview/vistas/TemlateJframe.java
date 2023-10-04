@@ -3,10 +3,14 @@ package com.fundacionview.vistas;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Font;
+import java.net.URL;
 
+import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class TemlateJframe  extends JFrame{
@@ -14,7 +18,8 @@ public class TemlateJframe  extends JFrame{
 	private JPanel PanePPal;
 	private JPanel PanelFooter;
 	private Component padre;
-	
+	protected final static String PATH_RECURSOS = "/com/fundacionview/rosources/";
+
 	
 	public TemlateJframe(String titulo,Component parent) {
 		super(titulo);
@@ -37,7 +42,21 @@ public class TemlateJframe  extends JFrame{
 		
 	}
 	
-	
+	 protected void cargarIcono(JLabel label, String nameIcon) {
+        label.setIcon(new ImageIcon(getURL(PATH_RECURSOS + nameIcon)));
+    }
+
+    protected void cargarIcono(AbstractButton btn, String nameIcon) {
+        btn.setIcon(new ImageIcon(getURL(PATH_RECURSOS + nameIcon)));
+    }
+
+	private URL getURL(String ruta) {
+        URL u = getClass().getResource(ruta);
+        if (u == null) {
+            throw new RuntimeException("No se pudo cargar recurso " + ruta);
+        }
+        return u;
+    }
 	public class PanelPie extends JPanel{
 		
 		private JLabel lebelAutor;
@@ -64,6 +83,12 @@ public class TemlateJframe  extends JFrame{
 		
 		
 	}
-	
+	  public void mostrarCartelDeError(String mensaje) {
+        JOptionPane.showMessageDialog(padre, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    public void mostrarCartelDeInfo(String mensaje) {
+        JOptionPane.showMessageDialog(padre, mensaje, "Info", JOptionPane.INFORMATION_MESSAGE);
+    }
 	
 }
