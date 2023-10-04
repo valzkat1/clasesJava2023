@@ -126,7 +126,6 @@ public class RepositorioContactos {
 	
 	
 	private void CompletarStatement(Contactos co, PreparedStatement ps ) throws SQLException {
-		
 		ps.setString(2, co.getNombre());
 		ps.setString(3, co.getApellidos());
 		ps.setString(4, co.getEmail());

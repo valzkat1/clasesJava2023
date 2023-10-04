@@ -12,6 +12,8 @@ public class Contactos {
 	private String direccion;
 	private String categoria;
 	
+	public Contactos() {}
+	
 	public String getCategoria() {
 		return categoria;
 	}
