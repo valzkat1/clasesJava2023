@@ -4,6 +4,7 @@ import com.fundacionview.modelos.Contactos;
 import com.fundacionview.modelos.RepositorioContactos;
 import com.fundacionview.vistas.FormularioCrear;
 import com.fundacionview.vistas.FormularioView;
+import com.fundacionview.vistas.VistaPrincipal;
 
 public class Controlador {
 
@@ -14,15 +15,20 @@ public class Controlador {
 	
 	private RepositorioContactos repoContactos;
 	
+	private VistaPrincipal vistaPrincipal;
+	
 	
 	public void iniciarApp() {
 		
 		repoContactos = new RepositorioContactos();
 		
-		formCreacion = new FormularioCrear("Crear Contacto", null);
+		vistaPrincipal = new VistaPrincipal("Agenda de Contactos ");
 		
-		formVisualizar = new FormularioView("", null, new Contactos());
+		formCreacion = new FormularioCrear("Crear Contacto", vistaPrincipal);
 		
+		formVisualizar = new FormularioView("", vistaPrincipal, new Contactos());
+		
+		vistaPrincipal.setVisible(true);
 		
 	}
 	

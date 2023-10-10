@@ -33,17 +33,7 @@ public class FormularioJframe extends TemlateJframe{
 		panelDatos = new JPanel();
 		panelDatos.setLayout(new GridLayout(5,1));
 		
-		panelDatos.add(txtNombre);
-		panelDatos.add(txtApellido);
-		panelDatos.add(txtDir);
-		panelDatos.add(txtEmail);
-		panelDatos.add(txtFecha);
 		
-		panelDatos.add(labelNombre);
-		panelDatos.add(labelApellido);
-		panelDatos.add(labelEmail);
-		panelDatos.add(labelDir);
-		panelDatos.add(labelFecha);
 		
 		botonGuardar = new JButton("Guardar");
 		panelDatos.add(botonGuardar);
@@ -69,6 +59,20 @@ public class FormularioJframe extends TemlateJframe{
 		
 		txtEmail.setFont(new Font("Lato",0,20));
 		txtEmail.setForeground(new Color(24,20,10));
+		
+		
+		panelDatos.add(txtNombre);
+		panelDatos.add(txtApellido);
+		panelDatos.add(txtDir);
+		panelDatos.add(txtEmail);
+		panelDatos.add(txtFecha);
+		
+		panelDatos.add(labelNombre);
+		panelDatos.add(labelApellido);
+		panelDatos.add(labelEmail);
+		panelDatos.add(labelDir);
+		panelDatos.add(labelFecha);
+		
 		
 	}
 
