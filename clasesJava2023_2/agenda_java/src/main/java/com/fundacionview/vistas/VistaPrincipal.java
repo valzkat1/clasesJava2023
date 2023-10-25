@@ -25,6 +25,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import com.fundacionview.modelos.Categoria;
+import com.fundacionview.modelos.Contactos;
 
 
 public class VistaPrincipal extends TemlateJframe {
@@ -203,6 +204,16 @@ public class VistaPrincipal extends TemlateJframe {
 		btnAgregar.setMinimumSize(new Dimension(40,40));
 		btnAgregar.setPreferredSize(new Dimension(60,40));
 		//btnAgregar.setEnabled(false);
+		
+		btnAgregar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				FormularioView FormV = new FormularioView("Editar Contactos", VistaPrincipal.this, new Contactos());
+				
+			}
+		});
 		
 		panelBotones.add(btnAgregar);
 		
